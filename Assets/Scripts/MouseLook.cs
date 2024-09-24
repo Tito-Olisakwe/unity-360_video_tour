@@ -3,7 +3,7 @@ using UnityEngine;
 public class MouseLook : MonoBehaviour
 {
     public float mouseSensitivity = 100f;
-    public float verticalLookLimit = 90f; // Limit for vertical rotation
+    public float verticalLookLimit = 90f;
     private float xRotation = 0f;
 
     void Start()
@@ -13,16 +13,13 @@ public class MouseLook : MonoBehaviour
 
     void Update()
     {
-        // Get mouse input
         float mouseX = Input.GetAxis("Mouse X") * mouseSensitivity * Time.deltaTime;
         float mouseY = Input.GetAxis("Mouse Y") * mouseSensitivity * Time.deltaTime;
 
-        // Vertical rotation (up and down)
         xRotation -= mouseY;
-        xRotation = Mathf.Clamp(xRotation, -verticalLookLimit, verticalLookLimit); // Limit vertical rotation
+        xRotation = Mathf.Clamp(xRotation, -verticalLookLimit, verticalLookLimit);
 
-        // Apply rotation
         transform.localRotation = Quaternion.Euler(xRotation, transform.localEulerAngles.y, 0f);
-        transform.Rotate(Vector3.up * mouseX, Space.World); // Horizontal rotation
+        transform.Rotate(Vector3.up * mouseX, Space.World);
     }
 }
