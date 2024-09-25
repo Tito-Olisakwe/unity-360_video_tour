@@ -4,6 +4,7 @@ public class SphereManager : MonoBehaviour
 {
     public GameObject[] spheres;
     public GameObject[] buttons;
+    public Animator fadeAnimator;
 
     void Start()
     {
@@ -12,6 +13,8 @@ public class SphereManager : MonoBehaviour
 
     public void SwitchSphere(int targetIndex)
     {
+        fadeAnimator.SetTrigger("Fade");
+
         foreach (GameObject button in buttons)
         {
             button.SetActive(true);
