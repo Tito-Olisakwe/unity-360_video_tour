@@ -22,5 +22,19 @@ public class MouseLook : MonoBehaviour
 
         transform.localRotation = Quaternion.Euler(xRotation, transform.localEulerAngles.y, 0f);
         transform.Rotate(Vector3.up * mouseX, Space.World);
+
+        
+        // Prevent cursor from locking when dealing with UI
+        if (Input.GetMouseButtonDown(0))
+        {
+            Cursor.lockState = CursorLockMode.None;
+            Cursor.visible = true;
+        }
+
+        if (Input.GetMouseButtonUp(0))
+        {
+            Cursor.lockState = CursorLockMode.Locked;
+            Cursor.visible = false;
+        }
     }
 }
