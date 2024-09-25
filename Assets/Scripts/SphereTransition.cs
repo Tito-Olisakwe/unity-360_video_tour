@@ -5,6 +5,7 @@ public class SphereManager : MonoBehaviour
     public GameObject[] spheres;
     public GameObject[] buttons;
     public Animator fadeAnimator;
+    public InfoBoxController infoBoxController;
 
     void Start()
     {
@@ -27,5 +28,8 @@ public class SphereManager : MonoBehaviour
 
         buttons[targetIndex].SetActive(false);
         spheres[targetIndex].SetActive(true);
+
+        infoBoxController.SetCurrentSphereIndex(targetIndex);
+        infoBoxController.HideInfoBox();
     }
 }
